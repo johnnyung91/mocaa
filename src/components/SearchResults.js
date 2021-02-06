@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Box, VStack, Grid, Heading } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { SearchForm } from './SearchForm';
@@ -8,7 +8,26 @@ import { EmployeeTable } from './EmployeeTable';
 
 export const SearchResults = () => {
   const [{ term }, dispatch] = useStateValue();
-  const { employees } = useDataSearch(term);
+  const [employees, setEmployees] = useState(null);
+
+  useEffect(() => {
+    const obj = { term };
+
+    const req = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/JSON',
+      },
+      body: JSON.stringify(obj),
+    };
+
+    fetch('http://localhost:5000/api/get-employees', req)
+      .then(res => res.json())
+      .then(data => {
+        setEmployees(data);
+      });
+
+  }, [term]);
 
   return (
     <Box textAlign="center" fontSize="xl">
