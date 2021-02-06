@@ -6,13 +6,13 @@ import reducer, { initialState } from './reducer';
 import { StateProvider } from './StateProvider';
 
 ReactDOM.render(
-  <StateProvider initialState={initialState} reducer={reducer}>
-    <ChakraProvider theme={theme}>
+  <ChakraProvider theme={theme}>
+    <StateProvider initialState={initialState} reducer={reducer}>
       <StrictMode>
         <ColorModeScript />
         <App />
       </StrictMode>
-    </ChakraProvider>
-  </StateProvider>,
+    </StateProvider>
+  </ChakraProvider>,
   document.getElementById('root')
 );

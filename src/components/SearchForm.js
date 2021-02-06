@@ -6,7 +6,7 @@ import { useStateValue } from '../StateProvider';
 import { actionTypes } from '../reducer';
 
 export const SearchForm = () => {
-  const [{}, dispatch] = useStateValue();
+  const [state, dispatch] = useStateValue();
 
   const [name, setName] = useState('');
   const history = useHistory();
