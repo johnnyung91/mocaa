@@ -1,9 +1,9 @@
 import React from 'react';
-import { Table, Thead, Tbody, Th, Tr } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Th, Tr, Heading } from '@chakra-ui/react';
 import { EmployeeRow } from './EmployeeRow';
 
-export const EmployeeTable = ({ employees}) => {
-  return (
+export const EmployeeTable = ({ employees }) => {
+  return employees.length > 1 ? (
     <Table size="md" variant="striped" colorScheme="gray">
       <Thead>
         <Tr>
@@ -19,5 +19,7 @@ export const EmployeeTable = ({ employees}) => {
         ))}
       </Tbody>
     </Table>
+  ) : (
+    <Heading>No employees</Heading>
   );
 };
