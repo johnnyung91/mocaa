@@ -5,13 +5,12 @@ import { useHistory } from 'react-router-dom';
 
 export const SearchForm = () => {
   const [name, setName] = useState('');
-  const history = useHistory
+  const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
-    //DO SOMETHING WITH NAME
 
-    history
+    history.push('/searchresults')
 
   };
 

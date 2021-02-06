@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export const SearchResults = props => {
-  console.log(props.location.state.results);
+export const SearchResults = () => {
 
   return (
     <div>
