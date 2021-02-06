@@ -2,16 +2,24 @@ import React, { useState } from 'react';
 import { Flex, Input, IconButton } from '@chakra-ui/react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
+import { useStateValue } from '../StateProvider';
+import { actionTypes } from '../reducer';
 
 export const SearchForm = () => {
+  const [{}, dispatch] = useStateValue();
+
   const [name, setName] = useState('');
   const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    history.push('/searchresults')
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      term: name
+    })
 
+    history.push('/searchresults');
   };
 
   return (
