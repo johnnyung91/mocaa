@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/api/get-employees', (req, res) => {
-  const { name } = req.body;
+  const { term: name} = req.body;
   const filtered = employees.filter(employee => {
     return employee.name.toLowerCase().includes(name.toLowerCase())
   });
