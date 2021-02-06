@@ -9,7 +9,6 @@ import { EmployeeTable } from './EmployeeTable';
 export const SearchResults = () => {
   const [{ term }, dispatch] = useStateValue();
   const { employees } = useDataSearch(term);
-  console.log(employees);
 
   return (
     <Box textAlign="center" fontSize="xl">
