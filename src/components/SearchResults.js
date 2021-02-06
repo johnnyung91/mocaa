@@ -70,7 +70,6 @@ export const SearchResults = () => {
     }
   };
 
-
   return (
     <Box textAlign="center" fontSize="xl">
       <Grid p={3}>
@@ -81,7 +80,7 @@ export const SearchResults = () => {
           <Flex w="100%" justify="space-evenly">
             <Button>MAGIC BUTTON</Button>
             <Menu>
-              <MenuButton as={Button} rightIcon={<FaChevronDown />}>
+              <MenuButton as={Button} rightIcon={<FaChevronDown />} colorScheme="blue">
                 Sort By
               </MenuButton>
               <MenuList>
