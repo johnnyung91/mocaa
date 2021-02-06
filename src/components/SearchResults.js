@@ -3,7 +3,6 @@ import { Box, VStack, Grid, Heading } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { SearchForm } from './SearchForm';
 import { useStateValue } from '../StateProvider';
-import { useDataSearch } from '../useDataSearch';
 import { EmployeeTable } from './EmployeeTable';
 
 export const SearchResults = () => {
