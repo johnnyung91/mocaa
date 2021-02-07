@@ -13,12 +13,11 @@ export const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     dispatch({
       type: actionTypes.SET_SEARCH_TERM,
       term: name
     })
-
+    setName('')
     history.push('/searchresults');
   };
 
