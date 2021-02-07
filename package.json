@@ -26,6 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npm run server --prefix server",
+    "inst-server": "yarn --prefix server",
+    "inst": "concurrently \"yarn\" \"yarn inst-server\"",
     "dev": "concurrently \"yarn start\" \"yarn server\""
   },
   "eslintConfig": {
