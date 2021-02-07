@@ -1,9 +1,6 @@
 # Mocaa Employee Search Page
 Mocaa Employee Search Page is only to be used for demo purposes.  All names and information are not completely fictional and has no connection to Mocaa.
 
-## Live Demo
-Try the application live at https://cmra.johnnyungcodes.com/
-
 ## Technologies Used
 - React.js
 - Node.js
