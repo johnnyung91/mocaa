@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './components/Home';
 import { SearchResults } from './components/SearchResults';
-import faker from 'faker';
 
 function App(props) {
   return (

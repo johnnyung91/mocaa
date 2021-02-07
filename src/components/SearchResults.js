@@ -6,11 +6,11 @@ import {
   Grid,
   Heading,
   Button,
-  Select,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { FaChevronDown } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
@@ -18,11 +18,17 @@ import { SearchForm } from './SearchForm';
 import { useStateValue } from '../StateProvider';
 import { EmployeeTable } from './EmployeeTable';
 import _ from 'lodash';
+import { FilterModal } from './FilterModal';
 
 export const SearchResults = () => {
   const [{ term }, dispatch] = useStateValue();
   const [employees, setEmployees] = useState(null);
   const [jobTypes, setJobTypes] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  //Filtered States
+  // const [filteredJobType, setFilteredJobType] = useState('');
+  // const [filteredActive, setFilteredActive] = useState('');
 
   useEffect(() => {
     const obj = { term };
@@ -86,7 +92,28 @@ export const SearchResults = () => {
     }
   };
 
-  console.log(employees);
+  const handleApply = (jobType, active, minAge, maxAge) => {
+    const filter = {}
+    if (jobType) filter.jobType = jobType
+    if (active) filter.activeEmployee = (active === 'true')
+
+    console.log(filter);
+
+    let filteredList = employees.filter(employee => {
+      for (const key in filter) {
+        console.log(employee[key], filter[key]);
+        if (employee[key] !== filter[key]) return false
+      }
+      return true
+    })
+    if (minAge) {
+      filteredList = filteredList.filter(x => x.age >= Number(minAge))
+    }
+    if (maxAge) {
+      filteredList = filteredList.filter(x => x.age <= Number(maxAge))
+    }
+    setEmployees(filteredList);
+  };
 
   return (
     <Box textAlign="center" fontSize="xl">
@@ -96,7 +123,15 @@ export const SearchResults = () => {
           <Heading>Mocaa Employee Search Page</Heading>
           <SearchForm />
           <Flex w="100%" justify="space-evenly">
-            <Button>MAGIC BUTTON</Button>
+            <Button colorScheme="blue" onClick={onOpen}>
+              Apply Filters
+            </Button>
+            <FilterModal
+              isOpen={isOpen}
+              onClose={onClose}
+              jobTypes={jobTypes}
+              handleApply={handleApply}
+            />
             <Menu>
               <MenuButton
                 as={Button}
@@ -133,17 +168,6 @@ export const SearchResults = () => {
               </MenuList>
             </Menu>
           </Flex>
-          {jobTypes && (
-            <Select w="300px">
-              <option value="">Select</option>
-              {jobTypes.map((x, i) => (
-                <option key={i} value={x}>
-                  {x}
-                </option>
-              ))}
-            </Select>
-          )}
-
           {employees && <EmployeeTable employees={employees} />}
         </VStack>
       </Grid>
