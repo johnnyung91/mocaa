@@ -26,8 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npm run server --prefix server",
-    "inst-server": "yarn --prefix server",
-    "inst": "concurrently \"yarn\" \"yarn inst-server\"",
+    "server-dependencies": "npm install --prefix server",
+    "install-all": "concurrently \"yarn\" \"yarn server-dependencies\"",
     "dev": "concurrently \"yarn start\" \"yarn server\""
   },
   "eslintConfig": {
