@@ -4,13 +4,16 @@ import { EmployeeRow } from './EmployeeRow';
 
 export const EmployeeTable = ({ employees }) => {
   return employees.length > 1 ? (
-    <Table size="md" variant="striped" colorScheme="gray">
+    <Table size="md" variant="striped" colorScheme="gray" mb="50px">
       <Thead>
         <Tr>
-          <Th>Name</Th>
+          <Th>Last Name</Th>
+          <Th>First Name</Th>
+          <Th isNumeric>Age</Th>
+          <Th>Email</Th>
           <Th>Job Title</Th>
           <Th>Job Type</Th>
-          <Th isNumeric>Age</Th>
+          <Th>Status</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -20,6 +23,6 @@ export const EmployeeTable = ({ employees }) => {
       </Tbody>
     </Table>
   ) : (
-    <Heading>No employees</Heading>
+    <Heading>No employees available</Heading>
   );
 };

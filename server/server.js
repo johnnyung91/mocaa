@@ -12,7 +12,7 @@ app.use(express.json());
 app.post('/api/get-employees', (req, res) => {
   const { term: name} = req.body;
   const filtered = employees.filter(employee => {
-    return employee.name.toLowerCase().includes(name.toLowerCase())
+    return employee.firstName.toLowerCase().includes(name.toLowerCase()) || employee.lastName.toLowerCase().includes(name.toLowerCase())
   });
   res.status(200).send(JSON.stringify(filtered));
 });

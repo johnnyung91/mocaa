@@ -57,12 +57,28 @@ export const SearchResults = () => {
         filtered = _.orderBy(employees, ['age'], ['desc']);
         setEmployees(filtered);
         break;
+      case 'firstNameAsc':
+        filtered = _.orderBy(employees, ['firstName'], ['asc']);
+        setEmployees(filtered);
+        break;
+      case 'firstNameDesc':
+        filtered = _.orderBy(employees, ['firstName'], ['desc']);
+        setEmployees(filtered);
+        break;
+      case 'jobTitle':
+        filtered = _.orderBy(employees, ['jobTitle'], ['asc']);
+        setEmployees(filtered);
+        break;
       case 'jobType':
         filtered = _.orderBy(employees, ['jobType'], ['asc']);
         setEmployees(filtered);
         break;
-      case 'ageDesc':
-        filtered = _.orderBy(employees, ['jobTitle'], ['asc']);
+      case 'lastNameAsc':
+        filtered = _.orderBy(employees, ['lastName'], ['asc']);
+        setEmployees(filtered);
+        break;
+      case 'lastNameDesc':
+        filtered = _.orderBy(employees, ['lastName'], ['desc']);
         setEmployees(filtered);
         break;
       default:
@@ -70,17 +86,23 @@ export const SearchResults = () => {
     }
   };
 
+  console.log(employees);
+
   return (
     <Box textAlign="center" fontSize="xl">
       <Grid p={3}>
         <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8} maxW="1140px" w="100%" m="0 auto" px={2}>
+        <VStack spacing={8} maxW="1380px" w="100%" m="0 auto" px={2}>
           <Heading>Mocaa Employee Search Page</Heading>
           <SearchForm />
           <Flex w="100%" justify="space-evenly">
             <Button>MAGIC BUTTON</Button>
             <Menu>
-              <MenuButton as={Button} rightIcon={<FaChevronDown />} colorScheme="blue">
+              <MenuButton
+                as={Button}
+                rightIcon={<FaChevronDown />}
+                colorScheme="blue"
+              >
                 Sort By
               </MenuButton>
               <MenuList>
@@ -90,11 +112,23 @@ export const SearchResults = () => {
                 <MenuItem onClick={() => filterEmployees('ageDesc')}>
                   Age Descending
                 </MenuItem>
-                <MenuItem onClick={() => filterEmployees('jobType')}>
-                  Job Type
+                <MenuItem onClick={() => filterEmployees('firstNameAsc')}>
+                  First Name Ascending
+                </MenuItem>
+                <MenuItem onClick={() => filterEmployees('firstNameDesc')}>
+                  First Name Descending
                 </MenuItem>
                 <MenuItem onClick={() => filterEmployees('jobTitle')}>
                   Job Title
+                </MenuItem>
+                <MenuItem onClick={() => filterEmployees('jobType')}>
+                  Job Type
+                </MenuItem>
+                <MenuItem onClick={() => filterEmployees('lastNameAsc')}>
+                  Last Name Ascending
+                </MenuItem>
+                <MenuItem onClick={() => filterEmployees('lastNameDesc')}>
+                  Last Name Descending
                 </MenuItem>
               </MenuList>
             </Menu>
